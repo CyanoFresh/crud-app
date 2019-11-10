@@ -2,19 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3226a82-41af-47eb-9fc6-aeb3d746db74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/actions/types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/actions/users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/reducers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/reducers/users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/store.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Users/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Users/UserPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Users/UsersPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Users/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/actions/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/actions/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/actions/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/reducers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/reducers/users.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -108,6 +107,9 @@
       <workItem from="1573051751870" duration="1366000" />
       <workItem from="1573079702630" duration="774000" />
       <workItem from="1573135552120" duration="3033000" />
+      <workItem from="1573308895778" duration="842000" />
+      <workItem from="1573319656436" duration="2676000" />
+      <workItem from="1573423885941" duration="4686000" />
     </task>
     <task id="LOCAL-00001" summary="some work">
       <created>1572993312062</created>

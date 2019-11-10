@@ -1,26 +1,38 @@
-import { ADD_USER, FETCH_USERS, USER_ERROR } from './types';
+import { ADD_USER, LOADED_USERS, LOADING_USERS_ERROR, LOADING_USERS } from './types';
 
-export const fetchUsers = () => (dispatch) => {
-  fetch('https://jsonplaceholder.typicode.com/posts')
+export const loadUsers = () => (dispatch) => {
+  dispatch({
+    type: LOADING_USERS,
+  });
+
+  fetch('https://jsonplaceholder.typicode.com/users')
     .then(res => res.json())
-    .then(data => dispatch({
-      type: FETCH_USERS,
-      payload: data,
-    }));
+    .then(
+      users => dispatch({
+        type: LOADED_USERS,
+        users,
+      }),
+      error => dispatch({
+        type: LOADING_USERS_ERROR,
+        error,
+      }),
+    );
 };
 
 export const addUser = (userData) => (dispatch) => {
-  fetch('https://jsonplaceholder.typicode.com/posts', {
+  fetch('https://jsonplaceholder.typicode.com/users', {
     method: 'POST',
     body: JSON.stringify(userData),
   })
     .then(res => res.json())
-    .then(user => dispatch({
-      type: ADD_USER,
-      payload: user,
-    }))
-    .catch(error => dispatch({
-      type: USER_ERROR,
-      error,
-    }));
+    .then(
+      user => dispatch({
+        type: ADD_USER,
+        payload: user,
+      }),
+      error => dispatch({
+        type: LOADING_USERS_ERROR,
+        error,
+      }),
+    );
 };
