@@ -8,35 +8,36 @@ import {
   Switch,
   Route, Link,
 } from 'react-router-dom';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider } from '@material-ui/core/styles';
 import store from './store';
 import Users from './pages/Users';
+import theme from './theme';
 
 ReactDOM.render(
   <Router>
     <Provider store={store}>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/users">Users</Link>
-        </li>
-      </ul>
+      <ThemeProvider theme={theme}>
+        <CssBaseline/>
 
-      <Switch>
-        <Route exact path="/">
-          <App/>
-        </Route>
-        <Route path="/users">
-          <Users/>
-        </Route>
-        <Route path="/about">
-          <h1>About</h1>
-        </Route>
-      </Switch>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/users">Users</Link>
+          </li>
+        </ul>
+
+        <Switch>
+          <Route exact path="/">
+            <App/>
+          </Route>
+          <Route path="/users">
+            <Users/>
+          </Route>
+        </Switch>
+      </ThemeProvider>
     </Provider>
   </Router>,
   document.getElementById('root'),

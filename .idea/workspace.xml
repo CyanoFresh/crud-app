@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3226a82-41af-47eb-9fc6-aeb3d746db74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Users/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Users/UserPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Users/UsersPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Users/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Home/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/theme.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/actions/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/actions/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/actions/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/reducers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/reducers/users.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,8 +69,15 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.frontend start">
     <configuration name="Unnamed" type="ChromiumRemoteDebugType" factoryName="Chromium Remote" activateToolWindowBeforeRun="false" nameIsGenerated="true" port="9229" restartOnDisconnect="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="frontend start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <envs />
       <method v="2" />
     </configuration>
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
@@ -88,6 +90,7 @@
     <list>
       <item itemvalue="Attach to Node.js/Chrome.Unnamed" />
       <item itemvalue="npm.start" />
+      <item itemvalue="npm.frontend start" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -109,7 +112,8 @@
       <workItem from="1573135552120" duration="3033000" />
       <workItem from="1573308895778" duration="842000" />
       <workItem from="1573319656436" duration="2676000" />
-      <workItem from="1573423885941" duration="4686000" />
+      <workItem from="1573423885941" duration="4865000" />
+      <workItem from="1573525144112" duration="903000" />
     </task>
     <task id="LOCAL-00001" summary="some work">
       <created>1572993312062</created>
@@ -118,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572993312062</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="some work">
+      <created>1573428782537</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1573428782537</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
