@@ -1,6 +1,6 @@
 import React from 'react';
 
-function UsersIndexPage() {
+function HomeIndexPage() {
   return (
     <div>
       <h1>Home</h1>
@@ -8,4 +8,4 @@ function UsersIndexPage() {
   );
 }
 
-export default UsersIndexPage;
+export default HomeIndexPage;

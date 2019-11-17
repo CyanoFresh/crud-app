@@ -14,6 +14,8 @@ fastify.get('/', async () => {
   return { ok: true };
 });
 
+fastify.register(require('./services/auth'));
+
 // MQTT
 const aedes = Aedes({
   authenticate: (client, username, password, done) => {
