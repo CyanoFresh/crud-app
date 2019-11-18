@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { AUTHENTICATED, AUTHENTICATING, AUTHENTICATION_ERROR } from './types';
+import {
+  AUTHENTICATED,
+  AUTHENTICATING,
+  AUTHENTICATION_ERROR,
+  LOGGED_OUT,
+} from './types';
 
 export const authenticate = (data) => (dispatch) => {
   dispatch({
@@ -9,22 +14,35 @@ export const authenticate = (data) => (dispatch) => {
   axios.post('/auth/login', data)
     .then(res => {
       if (!res.data.ok) {
+        console.log(res);
+
         return dispatch({
           type: AUTHENTICATION_ERROR,
           error: `Error: ${res.data.error}`,
         });
       }
 
-      return dispatch({
+      dispatch({
         type: AUTHENTICATED,
       });
     })
     .catch(e => {
-      const error = e.status === 401 ? 'Wrong username or password' : e.message;
+      const error = (e.response && (e.response.data.message || e.response.statusText)) || e.message;
+
+      console.log(e);
 
       dispatch({
         type: AUTHENTICATION_ERROR,
         error,
+      });
+    });
+};
+
+export const logout = () => (dispatch) => {
+  axios.post('/auth/logout')
+    .then(() => {
+      dispatch({
+        type: LOGGED_OUT,
       });
     });
 };

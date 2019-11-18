@@ -1,7 +1,7 @@
 import {
   AUTHENTICATED,
   AUTHENTICATING,
-  AUTHENTICATION_ERROR,
+  AUTHENTICATION_ERROR, LOGGED_OUT,
 } from '../actions/types';
 
 const initialState = {
@@ -23,6 +23,7 @@ export default function(state = initialState, action) {
     case AUTHENTICATING: {
       return {
         ...state,
+        isLoggedIn: false,
         loading: true,
         error: null,
       };
@@ -30,8 +31,15 @@ export default function(state = initialState, action) {
     case AUTHENTICATION_ERROR: {
       return {
         ...state,
+        isLoggedIn: false,
         loading: false,
         error: action.error,
+      };
+    }
+    case LOGGED_OUT: {
+      return {
+        ...state,
+        isLoggedIn: false,
       };
     }
     default:

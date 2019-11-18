@@ -8,13 +8,22 @@ const { sequelize } = require('./models');
 const config = require('./config');
 
 // HTTP
-const fastify = require('fastify')();
-
-fastify.get('/', async () => {
-  return { ok: true };
+const fastify = require('fastify')({
+  trustProxy: config.behindProxy,
+  log: true,
 });
 
+fastify.register(require('fastify-helmet'), {
+  hidePoweredBy: { setTo: 'PHP 4.2.0' },
+});
+fastify.register(require('fastify-sensible'));
+fastify.register(require('fastify-cookie'));
+fastify.register(require('fastify-rate-limit'), {
+  global: false,
+});
 fastify.register(require('./services/auth'));
+
+fastify.get('/', () => ({ ok: true }));
 
 // MQTT
 const aedes = Aedes({

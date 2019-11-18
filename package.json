@@ -7,6 +7,7 @@
     "start": "node ./index.js",
     "debug": "nodemon --ignore ./frontend --inspect ./index.js"
   },
+  "bin": "./bin/index.js",
   "license": "ISC",
   "dependencies": {
     "aedes": "^0.39.0",
@@ -16,6 +17,8 @@
     "fastify-cookie": "^3.2.0",
     "fastify-cors": "^2.2.0",
     "fastify-helmet": "^3.0.2",
+    "fastify-rate-limit": "^2.4.0",
+    "fastify-sensible": "^2.1.1",
     "make-promises-safe": "^5.1.0",
     "mysql2": "^2.0.0",
     "sequelize": "^5.21.2",

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Home from '../pages/Home';
 import Users from '../pages/Users';
+import { logout } from '../actions/auth';
 
-const PrivateApp = () => {
+const PrivateApp = ({ logout }) => {
   return (
     <>
       <ul>
@@ -12,6 +14,9 @@ const PrivateApp = () => {
         </li>
         <li>
           <Link to="/users">Users</Link>
+        </li>
+        <li>
+          <button onClick={logout}>Log out</button>
         </li>
       </ul>
 
@@ -27,4 +32,4 @@ const PrivateApp = () => {
   );
 };
 
-export default PrivateApp;
+export default connect(null, { logout })(PrivateApp);

@@ -1,4 +1,5 @@
 module.exports = {
+  behindProxy: Boolean(process.env.BEHIND_PROXY),
   ports: {
     MQTT: process.env.MQTT_PORT || 1883,
     WS: process.env.WS_PORT || 8888,

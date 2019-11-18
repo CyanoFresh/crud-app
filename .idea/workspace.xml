@@ -2,23 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3226a82-41af-47eb-9fc6-aeb3d746db74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/actions/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/PrivateApp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/PrivateRoute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/SignIn/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/reducers/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/users/createUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/actions/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/actions/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/actions/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Home/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/PrivateApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/PrivateApp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/reducers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/reducers/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/20191104231830-create-user.js" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/20191104231830-create-user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/auth/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/auth/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/users/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/users/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,13 +61,14 @@
     <property name="ts.external.directory.path" value="C:\Users\Alex\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\192.7142.35\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\JS\crud-app\frontend\src\components" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\JS\crud-app\frontend\src\reducers" />
       <recent name="D:\JS\crud-app" />
       <recent name="D:\JS\crud-app\config" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JS\crud-app\services\users" />
+      <recent name="D:\JS\crud-app\frontend\src\components" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -83,8 +83,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Attach to Node.js/Chrome.Unnamed">
-    <configuration name="Unnamed" type="ChromiumRemoteDebugType" factoryName="Chromium Remote" activateToolWindowBeforeRun="false" nameIsGenerated="true" port="9229" restartOnDisconnect="true">
+  <component name="RunManager" selected="npm.frontend start">
+    <configuration name="debug nodemon" type="ChromiumRemoteDebugType" factoryName="Chromium Remote" activateToolWindowBeforeRun="false" port="9229" restartOnDisconnect="true">
       <method v="2" />
     </configuration>
     <configuration name="frontend start" type="js.build_tools.npm">
@@ -94,7 +94,7 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+    <configuration name="nodemon" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
@@ -105,8 +105,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Attach to Node.js/Chrome.Unnamed" />
-      <item itemvalue="npm.start" />
+      <item itemvalue="Attach to Node.js/Chrome.debug nodemon" />
+      <item itemvalue="npm.nodemon" />
       <item itemvalue="npm.frontend start" />
     </list>
   </component>
@@ -131,7 +131,8 @@
       <workItem from="1573319656436" duration="2676000" />
       <workItem from="1573423885941" duration="4865000" />
       <workItem from="1573525144112" duration="924000" />
-      <workItem from="1573944846450" duration="5027000" />
+      <workItem from="1573944846450" duration="5178000" />
+      <workItem from="1574026882844" duration="8370000" />
     </task>
     <task id="LOCAL-00001" summary="some work">
       <created>1572993312062</created>
@@ -154,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573526373238</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="some work">
+      <created>1573950723152</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1573950723153</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
