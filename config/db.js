@@ -5,7 +5,7 @@ module.exports = {
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
     dialect: 'mysql',
-    logging: process.env.DB_LOGS === '1',
+    logging: process.env.DB_LOGS === '1' && console.log,
   },
   test: {
     dialect: "sqlite",
@@ -17,6 +17,6 @@ module.exports = {
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
     dialect: 'mysql',
-    logging: process.env.DB_LOGS === '1',
+    logging: process.env.DB_LOGS === '1' && console.log,
   },
 };

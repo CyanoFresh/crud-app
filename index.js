@@ -13,17 +13,22 @@ const fastify = require('fastify')({
   log: true,
 });
 
-fastify.register(require('fastify-helmet'), {
-  hidePoweredBy: { setTo: 'PHP 4.2.0' },
-});
 fastify.register(require('fastify-sensible'));
 fastify.register(require('fastify-cookie'));
-fastify.register(require('fastify-rate-limit'), {
-  global: false,
-});
-fastify.register(require('./services/auth'));
 
-fastify.get('/', () => ({ ok: true }));
+if (process.env.NODE_ENV === 'production') {
+  fastify.register(require('fastify-helmet'), {
+    hidePoweredBy: { setTo: 'PHP 4.2.0' },
+  });
+
+  fastify.register(require('fastify-rate-limit'), {
+    global: false,
+  });
+}
+
+fastify.register(require('./services'), {
+  prefix: '/api'
+});
 
 // MQTT
 const aedes = Aedes({

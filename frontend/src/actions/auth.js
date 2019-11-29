@@ -6,43 +6,41 @@ import {
   LOGGED_OUT,
 } from './types';
 
-export const authenticate = (data) => (dispatch) => {
+export const authenticate = (data) => async (dispatch) => {
   dispatch({
     type: AUTHENTICATING,
   });
 
-  axios.post('/auth/login', data)
-    .then(res => {
-      if (!res.data.ok) {
-        console.log(res);
+  try {
+    const res = await axios.post('/auth/login', data);
 
-        return dispatch({
-          type: AUTHENTICATION_ERROR,
-          error: `Error: ${res.data.error}`,
-        });
-      }
-
-      dispatch({
-        type: AUTHENTICATED,
-      });
-    })
-    .catch(e => {
-      const error = (e.response && (e.response.data.message || e.response.statusText)) || e.message;
-
-      console.log(e);
-
-      dispatch({
+    if (!res.data.ok) {
+      return dispatch({
         type: AUTHENTICATION_ERROR,
-        error,
+        error: `Error: ${res.data.error}`,
       });
+    }
+
+    return dispatch({
+      type: AUTHENTICATED,
+      payload: res.data.user,
     });
+  } catch (e) {
+    const error = (e.response && (e.response.data.message || e.response.statusText)) || e.message;
+
+    console.error('caught auth error', e);
+
+    return dispatch({
+      type: AUTHENTICATION_ERROR,
+      error,
+    });
+  }
 };
 
-export const logout = () => (dispatch) => {
-  axios.post('/auth/logout')
-    .then(() => {
-      dispatch({
-        type: LOGGED_OUT,
-      });
-    });
+export const logout = () => async (dispatch) => {
+  axios.post('/auth/logout');
+
+  dispatch({
+    type: LOGGED_OUT,
+  });
 };

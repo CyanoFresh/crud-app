@@ -9,23 +9,18 @@ import theme from '../theme';
 import PrivateRoute from './PrivateRoute';
 import PrivateApp from './PrivateApp';
 import SignIn from '../pages/SignIn';
-import { connect } from 'react-redux';
 
-function App({isLoggedIn}) {
+function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline/>
 
       <Switch>
         <Route path="/login" exact component={SignIn}/>
-        <PrivateRoute path="/" component={PrivateApp} auth={isLoggedIn}/>
+        <PrivateRoute path="/" component={PrivateApp}/>
       </Switch>
     </ThemeProvider>
   );
 }
 
-const mapStateToProps = ({ auth }) => ({
-  isLoggedIn: auth.isLoggedIn,
-});
-
-export default connect(mapStateToProps)(App);
+export default App;

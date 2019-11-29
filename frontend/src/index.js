@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
-import store from './store';
+import { ConnectedRouter } from 'connected-react-router';
+import * as serviceWorker from './serviceWorker';
+import store, { history } from './utils/store';
+import { setupAxios } from './utils/configure-axios';
+// import './utils/sentry';
+
+setupAxios(store);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <ConnectedRouter history={history}>
       <App/>
-    </Router>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root'),
 );

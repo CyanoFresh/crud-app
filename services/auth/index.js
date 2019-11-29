@@ -17,6 +17,13 @@ const loginOpts = {
         type: 'object',
         properties: {
           ok: { type: 'boolean' },
+          user: {
+            type: 'object',
+            properties: {
+              id: { type: 'integer' },
+              username: { type: 'string' },
+            },
+          },
         },
       },
     },
@@ -47,13 +54,19 @@ async function routes(fastify) {
       throw fastify.httpErrors.unauthorized('Wrong username or password');
     }
 
-    reply.setCookie('token', 'loltokenissecure', {
+    reply.setCookie('token', 'lol_this_token_is_secure', {
       httpOnly: true,
       sameSite: true,
-      secure: true,
+      secure: process.env.NODE_ENV === 'production',
     });
 
-    return { ok: true };
+    return {
+      ok: true,
+      user: {
+        id: user.id,
+        username: user.username,
+      },
+    };
   });
 
   fastify.post('/auth/logout', async (request, reply) => {

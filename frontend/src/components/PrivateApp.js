@@ -5,7 +5,7 @@ import Home from '../pages/Home';
 import Users from '../pages/Users';
 import { logout } from '../actions/auth';
 
-const PrivateApp = ({ logout }) => {
+const PrivateApp = ({ logout,user }) => {
   return (
     <>
       <ul>
@@ -16,7 +16,7 @@ const PrivateApp = ({ logout }) => {
           <Link to="/users">Users</Link>
         </li>
         <li>
-          <button onClick={logout}>Log out</button>
+          {user.username} - <button onClick={logout}>Log out</button>
         </li>
       </ul>
 
@@ -32,4 +32,8 @@ const PrivateApp = ({ logout }) => {
   );
 };
 
-export default connect(null, { logout })(PrivateApp);
+const mapStateToProps = ({ auth }) => ({
+  user: auth.user,
+});
+
+export default connect(mapStateToProps, { logout })(PrivateApp);

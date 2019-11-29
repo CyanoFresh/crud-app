@@ -10,9 +10,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { connect } from 'react-redux';
-import { authenticate } from '../../actions/auth';
-import { Redirect } from 'react-router-dom';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import { Redirect } from 'react-router-dom';
+import { authenticate } from '../../actions/auth';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
