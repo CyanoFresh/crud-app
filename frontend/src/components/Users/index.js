@@ -8,11 +8,11 @@ const Users = ({ users, isLoading, error, loadUsers }) => {
     loadUsers();
   }, [loadUsers]);
 
-  if (isLoading && !users.length) {
+  if (isLoading) {
     return <p>Loading...</p>;
   }
 
-  if (error && !users.length) {
+  if (error) {
     return <p>Error: {error}</p>;
   }
 

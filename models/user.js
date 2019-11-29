@@ -3,10 +3,12 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     name: DataTypes.STRING,
     password_hash: DataTypes.STRING,
+    api_key: DataTypes.STRING(50),
   }, {
     updatedAt: false,
   });
   User.associate = function(models) {
+    User.hasMany(models.UserToken);
   };
   return User;
 };

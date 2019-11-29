@@ -1,7 +1,7 @@
 const argon2 = require('argon2');
-const authenticatedHandler = require('../authenticatedHandler');
-const { User } = require('../../models');
+const { User, sequelize, UserToken } = require('../../models');
 const config = require('../../config');
+const generateToken = require('./generateToken');
 
 const loginOpts = {
   schema: {
@@ -50,7 +50,6 @@ const logoutOpts = {
       },
     },
   },
-  preHandler: [authenticatedHandler],
 };
 
 async function routes(fastify) {
@@ -71,11 +70,20 @@ async function routes(fastify) {
       return { ok: false, error: 'Wrong username or password' };
     }
 
-    reply.setCookie('token', 'lol_this_token_is_secure', {
+    const token = await generateToken();
+
+    const userToken = await user.createUserToken({
+      userAgent: request.headers['user-agent'],
+      ip: request.ip,
+      token,
+      expiresAt: sequelize.literal(`NOW() + INTERVAL ${config.auth.maxAge} SECOND`),
+    });
+
+    reply.setCookie('token', userToken.token, {
       httpOnly: true,
       sameSite: true,
       path: '/',
-      maxAge: request.body.rememberMe && config.auth.maxAge,
+      maxAge: request.body.rememberMe ? config.auth.maxAge : undefined,
       secure: process.env.NODE_ENV === 'production',
     });
 
@@ -90,9 +98,23 @@ async function routes(fastify) {
   });
 
   fastify.post('/auth/logout', logoutOpts, async (request, reply) => {
+    const { token } = request.cookies;
+
     reply.clearCookie('token', {
       path: '/',
     });
+
+    if (token) {
+      const userToken = await UserToken.findOne({
+        where: {
+          token,
+        },
+      });
+
+      if (userToken) {
+        await userToken.destroy();
+      }
+    }
 
     return { ok: true };
   });

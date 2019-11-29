@@ -53,7 +53,6 @@ const PrivateApp = ({ logout, user }) => {
           <Typography variant="h6" className={classes.title}>
             Solomaha Home
           </Typography>
-
           <div>
             <IconButton
               aria-label="account of current user"

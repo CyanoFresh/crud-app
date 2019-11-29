@@ -6,6 +6,7 @@ module.exports = {
     HTTP: process.env.HTTP_PORT || 8080,
   },
   auth: {
+    tokenLength: 25,
     maxAge: 60 * 60 * 24 * 7,
   },
 };

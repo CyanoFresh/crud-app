@@ -49,9 +49,12 @@ function SignIn({ authenticate, isLoggedIn, isLoading, error }) {
 
   const onChange = (e) => {
     e.persist();
+
+    const newValue = e.target.type === 'checkbox' ? e.target.checked :  e.target.value;
+
     setInputs(inputs => ({
       ...inputs,
-      [e.target.name]: e.target.value,
+      [e.target.name]: newValue,
     }));
   };
 
@@ -104,13 +107,10 @@ function SignIn({ authenticate, isLoggedIn, isLoading, error }) {
           <FormControlLabel
             control={
               <Checkbox
-                value="remember"
                 color="primary"
+                name="rememberMe"
                 checked={inputs.rememberMe}
-                onChange={e => setInputs(inputs => ({
-                  ...inputs,
-                  rememberMe: e.target.checked,
-                }))}
+                onChange={onChange}
               />
             }
             label="Remember me"
