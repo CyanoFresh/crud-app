@@ -1,30 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b3226a82-41af-47eb-9fc6-aeb3d746db74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/utils/configure-axios.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/utils/sentry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model.mwb.bak" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/index.js" afterDir="false" />
+    <list default="true" id="b3226a82-41af-47eb-9fc6-aeb3d746db74" name="Default Changelist" comment="some work">
+      <change afterPath="$PROJECT_DIR$/services/authenticatedHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Alex.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Alex.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/actions/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/actions/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/actions/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/actions/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/actions/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/PrivateApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/PrivateApp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/PrivateRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/PrivateRoute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/SignIn/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/SignIn/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/reducers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/reducers/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/utils/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/model.mwb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Users/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Users/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/utils/configure-axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/utils/configure-axios.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/auth/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/auth/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/users/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/users/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +96,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\Alex\AppData\Roaming\npm\node_modules\prettier" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
-    <property name="ts.external.directory.path" value="C:\Users\Alex\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\192.7142.35\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="C:\Users\Alex\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\193.5233.80\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
   </component>
   <component name="RecentsManager">
@@ -123,7 +112,7 @@
       <recent name="D:\JS\crud-app\config" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.nodemon">
+  <component name="RunManager" selected="Attach to Node.js/Chrome.debug nodemon">
     <configuration name="debug nodemon" type="ChromiumRemoteDebugType" factoryName="Chromium Remote" activateToolWindowBeforeRun="false" port="9229" restartOnDisconnect="true">
       <method v="2" />
     </configuration>
@@ -155,12 +144,7 @@
       <list>
         <serviceView>
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:crud-app@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
@@ -196,6 +180,7 @@
       <workItem from="1574859430487" duration="1762000" />
       <workItem from="1574954436396" duration="7828000" />
       <workItem from="1574978208384" duration="5851000" />
+      <workItem from="1575035975408" duration="14022000" />
     </task>
     <task id="LOCAL-00001" summary="some work">
       <created>1572993312062</created>
@@ -260,25 +245,65 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="224" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1574859419517" />
-    <state width="1865" height="269" key="GridCell.Tab.0.bottom" timestamp="1574985200396">
+    <state x="467" y="36" key="CommitChangelistDialog2" timestamp="1575064968244">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1574985200396" />
-    <state width="1865" height="269" key="GridCell.Tab.0.center" timestamp="1574985200396">
+    <state x="467" y="36" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1575064968244" />
+    <state width="1865" height="332" key="GridCell.Tab.0.bottom" timestamp="1575054108130">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="269" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1574985200396" />
-    <state width="1865" height="269" key="GridCell.Tab.0.left" timestamp="1574985200396">
+    <state width="1865" height="332" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1575054108130" />
+    <state width="1865" height="332" key="GridCell.Tab.0.center" timestamp="1575054108130">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="269" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1574985200396" />
-    <state width="1865" height="269" key="GridCell.Tab.0.right" timestamp="1574985200396">
+    <state width="1865" height="332" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1575054108130" />
+    <state width="1865" height="332" key="GridCell.Tab.0.left" timestamp="1575054108130">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="269" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1574985200396" />
+    <state width="1865" height="332" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1575054108130" />
+    <state width="1865" height="332" key="GridCell.Tab.0.right" timestamp="1575054108130">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="332" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1575054108130" />
+    <state width="1865" height="332" key="GridCell.Tab.1.bottom" timestamp="1575054108130">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="332" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1575054108130" />
+    <state width="1865" height="332" key="GridCell.Tab.1.center" timestamp="1575054108130">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="332" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1575054108130" />
+    <state width="1865" height="332" key="GridCell.Tab.1.left" timestamp="1575054108130">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="332" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1575054108130" />
+    <state width="1865" height="332" key="GridCell.Tab.1.right" timestamp="1575054108130">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="332" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1575054108130" />
+    <state width="1865" height="332" key="GridCell.Tab.2.bottom" timestamp="1575054108131">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="332" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1575054108131" />
+    <state width="1865" height="332" key="GridCell.Tab.2.center" timestamp="1575054108131">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="332" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1575054108131" />
+    <state width="1865" height="332" key="GridCell.Tab.2.left" timestamp="1575054108130">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="332" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1575054108130" />
+    <state width="1865" height="332" key="GridCell.Tab.2.right" timestamp="1575054108131">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1865" height="332" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1575054108131" />
     <state x="337" y="68" key="SettingsEditor" timestamp="1574955500242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="337" y="68" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1574955500242" />
+    <state x="452" y="180" key="Vcs.Push.Dialog.v2" timestamp="1574987076151">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="452" y="180" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1574987076151" />
   </component>
 </project>

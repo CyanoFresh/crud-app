@@ -1,5 +1,7 @@
 const argon2 = require('argon2');
+const authenticatedHandler = require('../authenticatedHandler');
 const { User } = require('../../models');
+const config = require('../../config');
 
 const loginOpts = {
   schema: {
@@ -17,6 +19,7 @@ const loginOpts = {
         type: 'object',
         properties: {
           ok: { type: 'boolean' },
+          error: { type: 'string' },
           user: {
             type: 'object',
             properties: {
@@ -36,6 +39,20 @@ const loginOpts = {
   },
 };
 
+const logoutOpts = {
+  schema: {
+    response: {
+      200: {
+        type: 'object',
+        properties: {
+          ok: { type: 'boolean' },
+        },
+      },
+    },
+  },
+  preHandler: [authenticatedHandler],
+};
+
 async function routes(fastify) {
   fastify.post('/auth/login', loginOpts, async (request, reply) => {
     const user = await User.findOne({
@@ -45,18 +62,20 @@ async function routes(fastify) {
     });
 
     if (!user) {
-      throw fastify.httpErrors.unauthorized('Wrong username or password');
+      return { ok: false, error: 'Wrong username or password' };
     }
 
     const passwordVerified = await argon2.verify(user.password_hash, request.body.password);
 
     if (!passwordVerified) {
-      throw fastify.httpErrors.unauthorized('Wrong username or password');
+      return { ok: false, error: 'Wrong username or password' };
     }
 
     reply.setCookie('token', 'lol_this_token_is_secure', {
       httpOnly: true,
       sameSite: true,
+      path: '/',
+      maxAge: request.body.rememberMe && config.auth.maxAge,
       secure: process.env.NODE_ENV === 'production',
     });
 
@@ -65,12 +84,15 @@ async function routes(fastify) {
       user: {
         id: user.id,
         username: user.username,
+        name: user.name,
       },
     };
   });
 
-  fastify.post('/auth/logout', async (request, reply) => {
-    reply.clearCookie('token');
+  fastify.post('/auth/logout', logoutOpts, async (request, reply) => {
+    reply.clearCookie('token', {
+      path: '/',
+    });
 
     return { ok: true };
   });

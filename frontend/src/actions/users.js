@@ -1,38 +1,31 @@
-import { ADD_USER, LOADED_USERS, LOADING_USERS_ERROR, LOADING_USERS } from './types';
+import { LOADED_USERS, LOADING_USERS_ERROR, LOADING_USERS } from './types';
+import axios from 'axios';
 
-export const loadUsers = () => (dispatch) => {
+export const loadUsers = () => async (dispatch) => {
   dispatch({
     type: LOADING_USERS,
   });
 
-  fetch('https://jsonplaceholder.typicode.com/users')
-    .then(res => res.json())
-    .then(
-      users => dispatch({
-        type: LOADED_USERS,
-        users,
-      }),
-      error => dispatch({
-        type: LOADING_USERS_ERROR,
-        error,
-      }),
-    );
-};
+  try {
+    const response = await axios.get('/users');
 
-export const addUser = (userData) => (dispatch) => {
-  fetch('https://jsonplaceholder.typicode.com/users', {
-    method: 'POST',
-    body: JSON.stringify(userData),
-  })
-    .then(res => res.json())
-    .then(
-      user => dispatch({
-        type: ADD_USER,
-        payload: user,
-      }),
-      error => dispatch({
-        type: LOADING_USERS_ERROR,
-        error,
-      }),
-    );
+    if (response.data.ok) {
+      return dispatch({
+        type: LOADED_USERS,
+        users: response.data.users,
+      });
+    }
+
+    return dispatch({
+      type: LOADING_USERS_ERROR,
+      error: `Error: ${response.data.error}`,
+    });
+  } catch (e) {
+    const error = (e.response && (e.response.data.message || e.response.statusText)) || e.message;
+
+    dispatch({
+      type: LOADING_USERS_ERROR,
+      error,
+    });
+  }
 };

@@ -1,40 +1,36 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { loadUsers } from '../../actions/users';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-class Users extends Component {
-  componentDidMount() {
-    this.props.loadUsers();
+const Users = ({ users, isLoading, error, loadUsers }) => {
+  useEffect(() => {
+    loadUsers();
+  }, [loadUsers]);
+
+  if (isLoading && !users.length) {
+    return <p>Loading...</p>;
   }
 
-  render() {
-    const { users, isLoading, error } = this.props;
-
-    if (isLoading && !users.length) {
-      return <p>Loading...</p>;
-    }
-
-    if (error && !users.length) {
-      return <p>Error: {error}</p>;
-    }
-
-    return (
-      <div>
-        {users.map(user => (
-          <div key={user.id}>
-            <Link to={'/users/' + user.id}>{user.name}</Link>
-          </div>
-        ))}
-      </div>
-    );
+  if (error && !users.length) {
+    return <p>Error: {error}</p>;
   }
-}
 
-const mapStateToProps = (state) => ({
-  users: state.users.users,
-  isLoading: state.users.loading,
-  error: state.users.error,
+  return (
+    <div>
+      {users.map(user => (
+        <div key={user.id}>
+          <Link to={'/users/' + user.id}>{user.username}</Link>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const mapStateToProps = ({ users }) => ({
+  users: users.users,
+  isLoading: users.loading,
+  error: users.error,
 });
 
 export default connect(mapStateToProps, { loadUsers })(Users);

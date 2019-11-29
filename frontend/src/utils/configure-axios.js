@@ -1,14 +1,12 @@
 import axios from 'axios';
-import { push } from 'connected-react-router';
-
-axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
+import { logout } from '../actions/auth';
 
 export const setupAxios = store => {
-  axios.interceptors.response.use(response => response, (error) => {
-    debugger;
+  axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
 
-    if (error.response.status === 401) {
-      store.dispatch(push('/login'));
+  axios.interceptors.response.use(response => response, (error) => {
+    if (error.response && error.response.status === 401) {
+      store.dispatch(logout());
     }
 
     return Promise.reject(error);

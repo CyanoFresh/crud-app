@@ -37,10 +37,10 @@ export const authenticate = (data) => async (dispatch) => {
   }
 };
 
-export const logout = () => async (dispatch) => {
-  axios.post('/auth/logout');
-
+export const logout = () => (dispatch) => {
   dispatch({
     type: LOGGED_OUT,
   });
+
+  return axios.post('/auth/logout');
 };

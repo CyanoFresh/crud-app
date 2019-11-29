@@ -5,4 +5,7 @@ module.exports = {
     WS: process.env.WS_PORT || 8888,
     HTTP: process.env.HTTP_PORT || 8080,
   },
+  auth: {
+    maxAge: 60 * 60 * 24 * 7,
+  },
 };
