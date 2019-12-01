@@ -1,17 +1,19 @@
 import mqtt from 'mqtt';
-import { SOCKET_CONNECT, SOCKET_CONNECTED, SOCKET_CONNECTING, SOCKET_DISCONNECT, SOCKET_ERROR } from '../actions/types';
+import {
+  SOCKET_CONNECT,
+  SOCKET_CONNECTED,
+  SOCKET_CONNECTING,
+  SOCKET_DISCONNECT,
+  SOCKET_DISCONNECTED,
+  SOCKET_ERROR, SOCKET_PUBLISH,
+} from '../actions/types';
+import { logout } from '../actions/auth';
 
-let client;
+/**
+ * @type MqttClient
+ */
+export let client;
 
-// const onOpen = dispatch => (event) => {
-//   console.log('websocket open', event.target.url);
-//   dispatch(actions.wsConnected(event.target.url));
-// };
-//
-// const onClose = dispatch => () => {
-//   dispatch(actions.wsDisconnected());
-// };
-//
 // const onMessage = dispatch => (event) => {
 //   const payload = JSON.parse(event.data);
 //   console.log('receiving server message');
@@ -33,16 +35,16 @@ export default store => next => action => {
       });
 
       // TODO:
-      if (client !== null) {
-        client.close();
+      if (client) {
+        client.end(true);
       }
 
       client = mqtt.connect(process.env.REACT_APP_SOCKET_URL, {
-        reconnectPeriod: 0,
+        // reconnectPeriod: 0,
       });
 
       client.on('connect', () => {
-        console.log('Socket started');
+        console.log('Socket opened');
 
         store.dispatch({
           type: SOCKET_CONNECTED,
@@ -50,7 +52,11 @@ export default store => next => action => {
       });
 
       client.on('error', (error) => {
-        console.log('Socket error', error);
+        if (error.code === 4) {
+          return store.dispatch(logout(false));
+        }
+
+        console.error('Socket error: ', error);
 
         store.dispatch({
           type: SOCKET_ERROR,
@@ -58,20 +64,25 @@ export default store => next => action => {
         });
       });
 
+      client.on('close', () => {
+        console.log('Socket closed');
+
+        store.dispatch({
+          type: SOCKET_DISCONNECTED,
+        });
+      });
+
       break;
     case SOCKET_DISCONNECT:
-      if (client !== null) {
+      if (client) {
         client.end();
       }
       client = null;
-      console.log('Socket closed');
       break;
-    case 'NEW_MESSAGE': // TODO
-      console.log('sending a message', action.msg);
-      client.send(JSON.stringify({ command: 'NEW_MESSAGE', message: action.msg }));
+    case SOCKET_PUBLISH:
+      client.publish(action.topic, action.payload);
       break;
     default:
-      console.log('the next action:', action);
       return next(action);
   }
 };

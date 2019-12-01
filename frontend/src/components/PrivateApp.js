@@ -13,7 +13,6 @@ import Typography from '@material-ui/core/Typography';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import mqtt from 'mqtt';
 import { socketConnect, socketDisconnect } from '../redux/actions/socket';
 
 const useStyles = makeStyles(theme => ({
