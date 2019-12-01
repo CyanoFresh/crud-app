@@ -3,7 +3,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Home from '../pages/Home';
 import Users from '../pages/Users';
-import { logout } from '../actions/auth';
+import { logout } from '../redux/actions/auth';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import mqtt from 'mqtt';
+import { socketConnect, socketDisconnect } from '../redux/actions/socket';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,22 +28,24 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const PrivateApp = ({ logout, user }) => {
+const PrivateApp = ({ logout, user, socketConnect, socketDisconnect }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  const handleMenu = event => {
-    setAnchorEl(event.currentTarget);
-  };
+  const handleMenu = event => setAnchorEl(event.currentTarget);
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const handleClose = () => setAnchorEl(null);
 
   useEffect(() => {
-    console.log('PrivateApp');
-  }, []);
+    console.log('PrivateApp effect');
+    socketConnect();
+
+    return () => {
+      console.log('PrivateApp cleared');
+      socketDisconnect();
+    };
+  }, [socketConnect, socketDisconnect]);
 
   return (
     <>
@@ -61,7 +65,7 @@ const PrivateApp = ({ logout, user }) => {
               onClick={handleMenu}
               color="inherit"
             >
-              <AccountCircle />
+              <AccountCircle/>
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -111,4 +115,4 @@ const mapStateToProps = ({ auth }) => ({
   user: auth.user,
 });
 
-export default connect(mapStateToProps, { logout })(PrivateApp);
+export default connect(mapStateToProps, { logout, socketConnect, socketDisconnect })(PrivateApp);

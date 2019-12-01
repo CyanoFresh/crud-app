@@ -12,7 +12,7 @@ import Container from '@material-ui/core/Container';
 import { connect } from 'react-redux';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import { Redirect } from 'react-router-dom';
-import { authenticate } from '../../actions/auth';
+import { authenticate } from '../../redux/actions/auth';
 
 const useStyles = makeStyles(theme => ({
   '@global': {

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { loadUsers } from '../../actions/users';
+import { loadUsers } from '../../redux/actions/users';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 

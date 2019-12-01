@@ -1,7 +1,7 @@
 const argon2 = require('argon2');
 const { User, sequelize, UserToken } = require('../../models');
 const config = require('../../config');
-const generateToken = require('./generateToken');
+const tokenService = require('./tokenService');
 
 const loginOpts = {
   schema: {
@@ -70,7 +70,7 @@ async function routes(fastify) {
       return { ok: false, error: 'Wrong username or password' };
     }
 
-    const token = await generateToken();
+    const token = await tokenService.generateToken();
 
     const userToken = await user.createUserToken({
       userAgent: request.headers['user-agent'],
@@ -105,15 +105,9 @@ async function routes(fastify) {
     });
 
     if (token) {
-      const userToken = await UserToken.findOne({
-        where: {
-          token,
-        },
+      UserToken.destroy({
+        where: { token },
       });
-
-      if (userToken) {
-        await userToken.destroy();
-      }
     }
 
     return { ok: true };

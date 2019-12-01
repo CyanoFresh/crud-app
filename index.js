@@ -1,11 +1,12 @@
-process.env.NODE_ENV !== 'production' && require('dotenv').config();
 require('make-promises-safe');
+process.env.NODE_ENV !== 'production' && require('dotenv').config();
 const net = require('net');
 const http = require('http');
 const Aedes = require('aedes');
 const webSocketStream = require('websocket-stream');
 const { sequelize } = require('./models');
 const config = require('./config');
+const tokenService = require('./services/auth/tokenService');
 
 // HTTP
 const fastify = require('fastify')({
@@ -27,14 +28,38 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 fastify.register(require('./services'), {
-  prefix: '/api'
+  prefix: '/api',
 });
 
 // MQTT
 const aedes = Aedes({
-  authenticate: (client, username, password, done) => {
-    const { req, id } = client;
-    done(null, true);
+  authenticate: async (client, username, password, done) => {
+    const closeWithError = (code = 4, message = 'Unauthorized') => {
+      const error = new Error(message);
+      error.returnCode = code;
+      return done(error, false);
+    };
+
+    try {
+      // Handle websocket user
+      if (client.conn && client.conn.req) {
+        const cookies = Object.fromEntries(client.conn.req.headers.cookie.split(/; */).map(x => x.split('=')));
+
+        if (cookies && cookies.token) {
+          const user = await tokenService.getUserByToken(cookies.token);
+
+          if (!user) {
+            return closeWithError();
+          }
+
+          client.user = user;
+        }
+      }
+
+      return done(null, true);
+    } catch (e) {
+      return closeWithError();
+    }
   },
 });
 
@@ -77,7 +102,11 @@ const httpServer = http.createServer()
 
 webSocketStream.createServer({
   server: httpServer,
-}, aedes.handle);
+}, (stream, request) => {
+  // TODO: wait for fix in Aedes upstream
+  stream.req = request;
+  aedes.handle(stream);
+});
 
 net.createServer(aedes.handle)
   .listen(config.ports.MQTT, () => console.log('MQTT server listening on port', config.ports.MQTT));

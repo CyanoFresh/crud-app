@@ -4,7 +4,7 @@ import App from './components/App';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import * as serviceWorker from './serviceWorker';
-import store, { history } from './utils/store';
+import store, { history } from './redux/store';
 import { setupAxios } from './utils/configure-axios';
 // import './utils/sentry';
 

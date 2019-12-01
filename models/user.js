@@ -1,4 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
+  /**
+   * @property {function<Promise<Model<UserToken>>>} createUserToken
+   */
   const User = sequelize.define('User', {
     username: DataTypes.STRING,
     name: DataTypes.STRING,

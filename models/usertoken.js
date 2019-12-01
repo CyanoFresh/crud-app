@@ -1,4 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
+  /**
+   * @property {function<Promise<Model<User>>>} getUser
+   */
   const UserToken = sequelize.define('UserToken', {
     token: DataTypes.STRING,
     ip: DataTypes.STRING,

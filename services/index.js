@@ -1,4 +1,4 @@
-const authenticatedHandler = require('./authenticatedHandler');
+const authenticatedHandler = require('./authenticatedPreHandler');
 
 module.exports = async (fastify) => {
   fastify.register(require('./auth'));
