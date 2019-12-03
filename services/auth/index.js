@@ -93,6 +93,7 @@ async function routes(fastify) {
         id: user.id,
         username: user.username,
         name: user.name,
+        isAdmin: user.isAdmin,
       },
     };
   });

@@ -5,7 +5,8 @@ import {
   SOCKET_CONNECTING,
   SOCKET_DISCONNECT,
   SOCKET_DISCONNECTED,
-  SOCKET_ERROR, SOCKET_PUBLISH,
+  SOCKET_ERROR,
+  SOCKET_PUBLISH,
 } from '../actions/types';
 import { logout } from '../actions/auth';
 

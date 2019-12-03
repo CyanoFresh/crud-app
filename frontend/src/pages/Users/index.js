@@ -1,21 +1,19 @@
 import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
-import UsersPage from './UsersPage';
-import UserPage from './UserPage';
+import Users from './Users';
+import User from './User';
 
-function UsersIndexPage() {
+export default () => {
   const match = useRouteMatch();
 
   return (
     <Switch>
       <Route path={`${match.path}/:id`}>
-        <UserPage/>
+        <User/>
       </Route>
       <Route path={match.path}>
-        <UsersPage/>
+        <Users/>
       </Route>
     </Switch>
   );
 }
-
-export default UsersIndexPage;

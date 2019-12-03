@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
    */
   const User = sequelize.define('User', {
     username: DataTypes.STRING,
+    isAdmin: DataTypes.BOOLEAN,
     name: DataTypes.STRING,
     password_hash: DataTypes.STRING,
     api_key: DataTypes.STRING(50),

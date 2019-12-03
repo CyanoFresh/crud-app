@@ -1,5 +1,24 @@
-import { LOADED_USERS, LOADING_USERS_ERROR, LOADING_USERS } from './types';
 import axios from 'axios';
+
+export const LOADING_USERS = 'LOADING_USERS';
+export const LOADED_USERS = 'LOADED_USERS';
+export const LOADING_USERS_ERROR = 'LOADING_USERS_ERROR';
+
+export const LOADING_USER = 'LOADING_USER';
+export const LOADED_USER = 'LOADED_USER';
+export const LOADING_USER_ERROR = 'LOADING_USERS_ERROR';
+
+export const ADD_USER = 'ADD_USER';
+export const ADDING_USER = 'ADDING_USER';
+export const ADDING_USER_ERROR = 'ADDING_USER_ERROR';
+
+export const DELETING_USER = 'DELETING_USER';
+export const DELETING_USER_ERROR = 'DELETING_USER_ERROR';
+export const DELETED_USER = 'DELETED_USER';
+
+export const UPDATE_USER = 'UPDATE_USER';
+export const UPDATING_USER = 'UPDATING_USER';
+export const UPDATING_USER_ERROR = 'UPDATING_USER_ERROR';
 
 export const loadUsers = () => async (dispatch) => {
   dispatch({
@@ -28,4 +47,36 @@ export const loadUsers = () => async (dispatch) => {
       error,
     });
   }
+};
+
+export const deleteUser = (id) => async (dispatch) => {
+  dispatch({
+    type: DELETING_USER,
+    payload: id,
+  });
+
+  // try {
+  //   const response = await axios.delete(`/users/${id}`);
+  //
+  //   if (response.data.ok) {
+  //     return dispatch({
+  //       type: DELETED_USER,
+  //       payload: id,
+  //     });
+  //   }
+  //
+  //   return dispatch({
+  //     type: DELETING_USER_ERROR,
+  //     error: `Error: ${response.data.error}`,
+  //payload: id,
+  //   });
+  // } catch (e) {
+  //   const error = (e.response && (e.response.data.message || e.response.statusText)) || e.message;
+  //
+  //   dispatch({
+  //     type: DELETING_USER_ERROR,
+  //     error,
+  // payload: id,
+  //   });
+  // }
 };

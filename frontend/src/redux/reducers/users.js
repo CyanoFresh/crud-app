@@ -1,38 +1,40 @@
-import { ADD_USER, DELETE_USER, LOADED_USERS, LOADING_USERS } from '../actions/types';
+import { ADD_USER, DELETED_USER, DELETING_USER, LOADED_USERS, LOADING_USERS } from '../actions/users';
 
 const initialState = {
   users: [],
   loading: true,
   error: null,
+  deletingId: null,
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case LOADING_USERS: {
+    case LOADING_USERS:
       return {
         ...state,
         loading: true,
       };
-    }
-    case LOADED_USERS: {
+    case LOADED_USERS:
       return {
         ...state,
         users: action.users,
         loading: false,
       };
-    }
-    case ADD_USER: {
+    case ADD_USER:
       return {
         ...state,
         users: [action.payload, ...state.users],
       };
-    }
-    case DELETE_USER: {
+    case DELETING_USER:
       return {
         ...state,
-        users: state.users.filter(user => user.id !== action.payload.id),
+        deletingId: action.payload,
       };
-    }
+    case DELETED_USER:
+      return {
+        ...state,
+        users: state.users.filter(user => user.id !== action.payload),
+      };
     default:
       return state;
   }

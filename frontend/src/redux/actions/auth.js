@@ -43,6 +43,6 @@ export const logout = (revokeToken = true) => (dispatch) => {
   });
 
   if (revokeToken) {
-    axios.post('/auth/logout');
+    return axios.post('/auth/logout');
   }
 };

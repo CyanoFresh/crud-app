@@ -1,9 +1,7 @@
 import React from 'react';
-import {
-  useParams
-} from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
-const UserPage = () => {
+const User = () => {
   const { id } = useParams();
 
   return (
@@ -13,4 +11,4 @@ const UserPage = () => {
   );
 };
 
-export default UserPage;
+export default User;
