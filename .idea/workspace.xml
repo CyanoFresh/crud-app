@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3226a82-41af-47eb-9fc6-aeb3d746db74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/ErrorMessage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/Users/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Users/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Users/Users.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Users/Users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/redux/actions/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/redux/actions/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/redux/reducers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/redux/reducers/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/auth/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/auth/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/users/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/users/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +183,7 @@
       <workItem from="1575586314115" duration="13000" />
       <workItem from="1575914197043" duration="61000" />
       <workItem from="1576278238881" duration="1030000" />
-      <workItem from="1576324274149" duration="2404000" />
+      <workItem from="1576324274149" duration="2747000" />
     </task>
     <task id="LOCAL-00001" summary="some work">
       <created>1572993312062</created>
@@ -252,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575332927825</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="some work">
+      <created>1576326870857</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1576326870857</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,10 +283,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="224" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1574859419517" />
-    <state x="467" y="36" key="CommitChangelistDialog2" timestamp="1576326861643">
+    <state x="467" y="36" key="CommitChangelistDialog2" timestamp="1576326869924">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="467" y="36" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1576326861643" />
+    <state x="467" y="36" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1576326869924" />
     <state width="314" height="242" key="DatabaseViewActions_Filter" timestamp="1575069452764">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -351,10 +347,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="337" y="68" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1575586326156" />
-    <state x="452" y="180" key="Vcs.Push.Dialog.v2" timestamp="1575332927931">
+    <state x="452" y="180" key="Vcs.Push.Dialog.v2" timestamp="1576326870570">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="452" y="180" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1575332927931" />
+    <state x="452" y="180" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040/-1680.40.1680.1010@0.0.1920.1040" timestamp="1576326870570" />
     <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1575067733744">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -366,20 +362,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/services/auth/index.js</url>
-          <line>85</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/services/authenticatedPreHandler.js</url>
-          <line>4</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint enabled="true" type="javascript-exception" />
       </default-breakpoints>
