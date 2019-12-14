@@ -12,7 +12,7 @@ const User = ({ user, isLoading, error, loadUser }) => {
     loadUser(id);
   }, [id, loadUser]);
 
-  if (isLoading && !user) {
+  if (isLoading || !user) {
     return <PageLoader size={80}/>;
   }
 

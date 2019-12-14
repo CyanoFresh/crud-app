@@ -52,9 +52,9 @@ export default function(state = initialState, action) {
       localStorage.removeItem('user');
       return {
         ...state,
+        error: action.error,
         isLoggedIn: false,
         loading: false,
-        error: action.error,
         user: {},
       };
     }
@@ -63,6 +63,8 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoggedIn: false,
+        error: null,
+        loading: false,
         user: {},
       };
     }

@@ -111,3 +111,32 @@ export const deleteUser = (id) => async (dispatch) => {
   //   });
   // }
 };
+
+export const createUser = (data) => async (dispatch) => {
+  dispatch({
+    type: ADDING_USER,
+  });
+
+  try {
+    const response = await axios.post(`/users`, data);
+
+    if (response.data.ok) {
+      return dispatch({
+        type: ADD_USER,
+        payload: response.data.user,
+      });
+    }
+
+    return dispatch({
+      type: ADDING_USER_ERROR,
+      error: `Error: ${response.data.error}`,
+    });
+  } catch (e) {
+    const error = (e.response && (e.response.data.message || e.response.statusText)) || e.message;
+
+    dispatch({
+      type: ADDING_USER_ERROR,
+      error,
+    });
+  }
+};

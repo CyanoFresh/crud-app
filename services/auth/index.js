@@ -25,6 +25,8 @@ const loginOpts = {
             properties: {
               id: { type: 'integer' },
               username: { type: 'string' },
+              name: { type: 'string' },
+              isAdmin: { type: 'boolean' },
             },
           },
         },

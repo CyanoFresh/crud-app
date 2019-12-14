@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import List from '@material-ui/core/List';
@@ -20,6 +20,7 @@ import { deleteUser, loadUsers } from '../../redux/actions/users';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import PageLoader from '../../components/PageLoader';
 import ErrorMessage from '../../components/ErrorMessage';
+import CreateUserDialog from './CreateUser/FormDialog';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -37,6 +38,7 @@ const useStyles = makeStyles(theme => ({
 
 const Users = ({ users, isLoading, error, loadUsers, deletingId, deleteUser }) => {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     loadUsers();
@@ -47,44 +49,49 @@ const Users = ({ users, isLoading, error, loadUsers, deletingId, deleteUser }) =
   }
 
   if (error) {
-    return <ErrorMessage error={error} />;
+    return <ErrorMessage error={error}/>;
   }
 
+  const onCreateUserDialogClose = () => setOpen(false);
+
   return (
-    <Grid item md={6}>
-      <Paper className={classes.paper}>
-        <Typography variant="h5" component="h2">
-          Users
-        </Typography>
-        <List>
-          {users.map(user => (
-            <ListItem button key={user.id} component={Link} to={`/users/${user.id}`}>
-              <ListItemAvatar>
-                <Avatar>
-                  <UserIcon/>
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary={user.username}/>
-              <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete" onClick={() => deleteUser(user.id)}>
-                  {deletingId === user.id ? <CircularProgress size={30}/> : <DeleteIcon/>}
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-          ))}
-        </List>
-      </Paper>
+    <>
+      <Grid item md={6}>
+        <Paper className={classes.paper}>
+          <Typography variant="h5" component="h2">
+            Users
+          </Typography>
+          <List>
+            {users.map(user => (
+              <ListItem button key={user.id} component={Link} to={`/users/${user.id}`}>
+                <ListItemAvatar>
+                  <Avatar>
+                    <UserIcon/>
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText primary={user.username}/>
+                <ListItemSecondaryAction>
+                  <IconButton edge="end" aria-label="delete" onClick={() => deleteUser(user.id)}>
+                    {deletingId === user.id ? <CircularProgress size={30}/> : <DeleteIcon/>}
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
+            ))}
+          </List>
+        </Paper>
+      </Grid>
 
       <Fab
         color="primary"
         aria-label="add"
         className={classes.fab}
-        component={Link}
-        to="/users/create"
+        onClick={() => setOpen(true)}
       >
         <AddIcon/>
       </Fab>
-    </Grid>
+
+      <CreateUserDialog open={open} onClose={onCreateUserDialogClose}/>
+    </>
   );
 };
 

@@ -15,11 +15,11 @@ const run = async () => {
 
         console.log('DB connected');
 
-        const [username, password, name] = params;
+        const [username, password, name, isAdmin = false] = params;
 
         console.log(`Creating user with username "${username}"...`);
 
-        const user = await createUser(username, password, name);
+        const user = await createUser(username, password, name, Boolean(isAdmin));
 
         if (user) {
           console.log('User created');

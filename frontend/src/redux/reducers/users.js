@@ -33,11 +33,14 @@ export default function(state = initialState, action) {
         ...state,
         users: action.users,
         loading: false,
+        error: null,
       };
     case LOADING_USER:
       return {
         ...state,
         loading: true,
+        error: null,
+        user: null,
       };
     case LOADED_USER:
       return {
