@@ -19,6 +19,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { deleteUser, loadUsers } from '../../redux/actions/users';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import PageLoader from '../../components/PageLoader';
+import ErrorMessage from '../../components/ErrorMessage';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -42,11 +43,11 @@ const Users = ({ users, isLoading, error, loadUsers, deletingId, deleteUser }) =
   }, [loadUsers]);
 
   if (isLoading) {
-    return <PageLoader size={100}/>;
+    return <PageLoader size={80}/>;
   }
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return <ErrorMessage error={error} />;
   }
 
   return (

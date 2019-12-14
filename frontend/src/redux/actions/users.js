@@ -49,6 +49,37 @@ export const loadUsers = () => async (dispatch) => {
   }
 };
 
+export const loadUser = (id) => async (dispatch) => {
+  dispatch({
+    type: LOADING_USER,
+  });
+
+  try {
+    const response = await axios.get(`/users/${id}`);
+
+    if (response.data.ok) {
+      return dispatch({
+        type: LOADED_USER,
+        user: response.data.user,
+      });
+    }
+
+    debugger;
+
+    return dispatch({
+      type: LOADING_USER_ERROR,
+      error: `Error: ${response.data.error}`,
+    });
+  } catch (e) {
+    const error = (e.response && (e.response.data.message || e.response.statusText)) || e.message;
+
+    dispatch({
+      type: LOADING_USER_ERROR,
+      error,
+    });
+  }
+};
+
 export const deleteUser = (id) => async (dispatch) => {
   dispatch({
     type: DELETING_USER,

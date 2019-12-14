@@ -81,7 +81,6 @@ async function routes(fastify) {
 
     reply.setCookie('token', userToken.token, {
       httpOnly: true,
-      sameSite: true,
       path: '/',
       maxAge: request.body.rememberMe ? config.auth.maxAge : undefined,
       secure: process.env.NODE_ENV === 'production',

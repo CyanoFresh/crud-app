@@ -37,12 +37,12 @@ export const authenticate = (data) => async (dispatch) => {
   }
 };
 
-export const logout = (revokeToken = true) => (dispatch) => {
+export const logout = (revokeToken = true) => async (dispatch) => {
   dispatch({
     type: LOGGED_OUT,
   });
 
   if (revokeToken) {
-    return axios.post('/auth/logout');
+    await axios.post('/auth/logout');
   }
 };

@@ -25,6 +25,11 @@ if (process.env.NODE_ENV === 'production') {
   fastify.register(require('fastify-rate-limit'), {
     global: false,
   });
+} else {
+  // fastify.register(require('fastify-cors'), {
+  //   origin: 'http://localhost:3000',
+  //   credentials: true,
+  // });
 }
 
 fastify.register(require('./services'), {
