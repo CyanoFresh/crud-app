@@ -1,5 +1,6 @@
+const argon2 = require('argon2');
 const createUser = require('./createUser');
-const { User, Sequelize } = require('../../models');
+const { User, UserToken, Sequelize } = require('../../models');
 
 async function routes(fastify) {
   fastify.get('/users', async () => {
@@ -83,6 +84,10 @@ async function routes(fastify) {
     },
     async (request, reply) => {
       try {
+        if (request.body.isAdmin && !request.user.isAdmin) {
+          delete request.body.isAdmin;
+        }
+
         const user = await createUser(request.body.username, request.body.password, request.body.name, request.body.isAdmin);
 
         if (!user) {
@@ -95,14 +100,13 @@ async function routes(fastify) {
             id: user.id,
             username: user.username,
             name: user.name,
+            isAdmin: user.isAdmin,
           },
         };
       } catch (e) {
         if (e instanceof Sequelize.UniqueConstraintError) {
           return reply.badRequest('Username is not unique');
         }
-
-        console.error(e);
 
         return reply.badRequest(e);
       }
@@ -115,6 +119,16 @@ async function routes(fastify) {
       required: ['id'],
       querystring: {
         id: { type: 'integer' },
+      },
+      body: {
+        type: 'object',
+        required: ['username', 'name'],
+        properties: {
+          username: { type: 'string' },
+          password: { type: 'string' },
+          name: { type: 'string' },
+          isAdmin: { type: 'boolean' },
+        },
       },
       response: {
         200: {
@@ -144,6 +158,58 @@ async function routes(fastify) {
       await user.destroy();
 
       return { ok: true };
+    },
+  );
+
+  fastify.put('/users/:id', {
+      required: ['id'],
+      querystring: {
+        id: { type: 'integer' },
+      },
+      response: {
+        200: {
+          type: 'object',
+          properties: {
+            ok: { type: 'boolean' },
+            userId: { type: 'integer' },
+          },
+        },
+      },
+    }, async (request, reply) => {
+      try {
+        const { id } = request.params;
+
+        if (request.body.isAdmin && !request.user.isAdmin) {
+          delete request.body.isAdmin;
+        }
+
+        if (request.body.password) {
+          request.body.password_hash = await argon2.hash(request.body.password);
+
+          // Close all active sessions for this user
+          await UserToken.destroy({ where: { UserId: id } });
+        }
+
+        const userId = await User.update(request.body, {
+          where: { id },
+          fields: ['username', 'name', 'isAdmin', request.body.password && 'password_hash'],
+        });
+
+        if (!userId) {
+          return reply.badRequest();
+        }
+
+        return {
+          ok: true,
+          userId,
+        };
+      } catch (e) {
+        if (e instanceof Sequelize.UniqueConstraintError) {
+          return reply.badRequest('Username is not unique');
+        }
+
+        return reply.badRequest(e);
+      }
     },
   );
 }

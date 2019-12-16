@@ -37,7 +37,7 @@ const renderCheckbox = ({ input, label }) => (
   </div>
 );
 
-const CreateUserForm = ({ handleSubmit, user }) => {
+const CreateUserForm = ({ handleSubmit, user, isCreating = true }) => {
   return (
     <form onSubmit={handleSubmit} id="create-user-form">
       <div>
@@ -54,7 +54,7 @@ const CreateUserForm = ({ handleSubmit, user }) => {
           type="password"
           component={renderTextField}
           label="Password"
-          required
+          required={isCreating}
         />
       </div>
       <div>

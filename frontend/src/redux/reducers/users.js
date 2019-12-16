@@ -2,21 +2,29 @@ import {
   ADD_USER, ADD_USER_MODAL, ADDING_USER, ADDING_USER_ERROR,
   DELETED_USER,
   DELETING_USER, DELETING_USER_ERROR, LOADED_USER,
-  LOADED_USERS, LOADING_USER,
+  LOADED_USERS, LOADING_USER, LOADING_USER_ERROR,
   LOADING_USERS,
-  LOADING_USERS_ERROR,
+  LOADING_USERS_ERROR, UPDATE_USER, UPDATING_USER, UPDATING_USER_ERROR,
 } from '../actions/users';
 
 const initialState = {
   users: [],
-  user: null,
   deletingId: null,
   loading: true,
   error: null,
   newUser: {
+    open: false,
     error: null,
     loading: false,
-    open: false,
+  },
+  user: {
+    user: null,
+    loading: false,
+    error: null,
+  },
+  updatingUser: {
+    loading: false,
+    error: null,
   },
 };
 
@@ -43,16 +51,32 @@ export default function(state = initialState, action) {
     case LOADING_USER:
       return {
         ...state,
-        loading: true,
-        error: null,
-        user: null,
+        user: { ...state.user, loading: true, error: null },
+      };
+    case LOADING_USER_ERROR:
+      return {
+        ...state,
+        user: { ...state.user, loading: false, error: action.error },
       };
     case LOADED_USER:
       return {
         ...state,
-        user: action.user,
-        loading: false,
-        error: null,
+        user: { ...state.user, loading: false, error: null, user: action.payload },
+      };
+    case UPDATING_USER:
+      return {
+        ...state,
+        updatingUser: { ...state.updatingUser, loading: true, error: null },
+      };
+    case UPDATING_USER_ERROR:
+      return {
+        ...state,
+        updatingUser: { ...state.updatingUser, loading: false, error: action.error },
+      };
+    case UPDATE_USER:
+      return {
+        ...state,
+        updatingUser: { ...state.updatingUser, loading: false, error: null },
       };
     case ADD_USER:
       return {

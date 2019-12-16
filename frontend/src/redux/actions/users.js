@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { push } from 'connected-react-router'
 
 export const LOADING_USERS = 'LOADING_USERS';
 export const LOADED_USERS = 'LOADED_USERS';
@@ -61,7 +62,7 @@ export const loadUser = (id) => async (dispatch) => {
     if (response.data.ok) {
       return dispatch({
         type: LOADED_USER,
-        user: response.data.user,
+        payload: response.data.user,
       });
     }
 
@@ -144,6 +145,37 @@ export const createUser = (data) => async (dispatch) => {
 
     dispatch({
       type: ADDING_USER_ERROR,
+      error,
+    });
+  }
+};
+
+export const updateUser = ({ id, ...data }) => async (dispatch) => {
+  dispatch({
+    type: UPDATING_USER,
+  });
+
+  try {
+    const response = await axios.put(`/users/${id}`, data);
+
+    if (response.data.ok) {
+      dispatch({
+        type: UPDATE_USER,
+        payload: response.data.user,
+      });
+
+      return dispatch(push('/users'));
+    }
+
+    return dispatch({
+      type: UPDATING_USER_ERROR,
+      error: `Error: ${response.data.error}`,
+    });
+  } catch (e) {
+    const error = (e.response && (e.response.data.message || e.response.statusText)) || e.message;
+
+    dispatch({
+      type: UPDATING_USER_ERROR,
       error,
     });
   }
