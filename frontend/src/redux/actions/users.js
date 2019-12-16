@@ -9,6 +9,7 @@ export const LOADED_USER = 'LOADED_USER';
 export const LOADING_USER_ERROR = 'LOADING_USERS_ERROR';
 
 export const ADD_USER = 'ADD_USER';
+export const ADD_USER_MODAL = 'ADD_USER_MODAL';
 export const ADDING_USER = 'ADDING_USER';
 export const ADDING_USER_ERROR = 'ADDING_USER_ERROR';
 
@@ -86,30 +87,37 @@ export const deleteUser = (id) => async (dispatch) => {
     payload: id,
   });
 
-  // try {
-  //   const response = await axios.delete(`/users/${id}`);
-  //
-  //   if (response.data.ok) {
-  //     return dispatch({
-  //       type: DELETED_USER,
-  //       payload: id,
-  //     });
-  //   }
-  //
-  //   return dispatch({
-  //     type: DELETING_USER_ERROR,
-  //     error: `Error: ${response.data.error}`,
-  //payload: id,
-  //   });
-  // } catch (e) {
-  //   const error = (e.response && (e.response.data.message || e.response.statusText)) || e.message;
-  //
-  //   dispatch({
-  //     type: DELETING_USER_ERROR,
-  //     error,
-  // payload: id,
-  //   });
-  // }
+  try {
+    const response = await axios.delete(`/users/${id}`);
+
+    if (response.data.ok) {
+      return dispatch({
+        type: DELETED_USER,
+        payload: id,
+      });
+    }
+
+    return dispatch({
+      type: DELETING_USER_ERROR,
+      error: `Error: ${response.data.error}`,
+      payload: id,
+    });
+  } catch (e) {
+    const error = (e.response && (e.response.data.message || e.response.statusText)) || e.message;
+
+    dispatch({
+      type: DELETING_USER_ERROR,
+      error,
+      payload: id,
+    });
+  }
+};
+
+export const changeUserModal = (isOpen) => (dispatch) => {
+  dispatch({
+    type: ADD_USER_MODAL,
+    payload: isOpen,
+  });
 };
 
 export const createUser = (data) => async (dispatch) => {

@@ -8,11 +8,15 @@ import Button from '@material-ui/core/Button';
 import React from 'react';
 import CreateUserForm from './Form';
 import { connect } from 'react-redux';
-import { createUser } from '../../../redux/actions/users';
+import { changeUserModal, createUser } from '../../../redux/actions/users';
+import ErrorMessage from '../../../components/ErrorMessage';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-function FormDialog({ onClose, open, createUser }) {
+function CreateUserDialog({ open, createUser, changeUserModal, error, loading }) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const onClose = () => changeUserModal(false);
 
   return (
     <Dialog
@@ -23,18 +27,23 @@ function FormDialog({ onClose, open, createUser }) {
     >
       <DialogTitle>Create User</DialogTitle>
       <DialogContent>
+        {error && <ErrorMessage error={error}/>}
         <CreateUserForm onSubmit={createUser}/>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} color="primary">
           Cancel
         </Button>
-        <Button color="primary" type="submit" form="create-user-form">
-          Create
+        <Button color="primary" type="submit" form="create-user-form" disabled={loading}>
+          {loading ? <CircularProgress size={30}/> : 'Create'}
         </Button>
       </DialogActions>
     </Dialog>
   );
 }
 
-export default connect(null, { createUser })(FormDialog);
+const mapStateToProps = ({ users }) => ({
+  ...users.newUser,
+});
+
+export default connect(mapStateToProps, { createUser, changeUserModal })(CreateUserDialog);

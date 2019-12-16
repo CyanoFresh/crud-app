@@ -8,9 +8,9 @@ module.exports = async (request, reply) => {
     return reply.unauthorized();
   }
 
-  const isTokenValid = await tokenService.validateToken(token);
+  request.user = await tokenService.getUserByToken(token);
 
-  if (!isTokenValid) {
+  if (!request.user) {
     return reply.unauthorized();
   }
 };
