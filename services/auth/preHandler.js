@@ -1,4 +1,4 @@
-const tokenService = require('./auth/tokenService');
+const tokenService = require('./tokenService');
 
 // TODO: support for api key
 module.exports = async (request, reply) => {

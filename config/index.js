@@ -9,4 +9,10 @@ module.exports = {
     tokenLength: 25,
     maxAge: 60 * 60 * 24 * 7,
   },
+  modules: [
+    {
+      id: 'variable',
+      frontend: true,
+    },
+  ],
 };

@@ -40,9 +40,11 @@ export default store => next => action => {
         client.end(true);
       }
 
-      client = mqtt.connect(process.env.REACT_APP_SOCKET_URL, {
-        // reconnectPeriod: 0,
-      });
+      client = mqtt.connect(
+        window.location.protocol === 'https:'
+          ? process.env.REACT_APP_SOCKET_URL
+          : process.env.REACT_APP_SOCKET_LOCAL_URL,
+      );
 
       client.on('connect', () => {
         console.log('Socket opened');

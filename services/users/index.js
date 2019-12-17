@@ -11,9 +11,7 @@ async function routes(fastify) {
     return { ok: true, users };
   });
 
-  fastify.get(
-    '/users/:id',
-    {
+  fastify.get('/users/:id', {
       required: ['id'],
       querystring: {
         id: { type: 'integer' },
@@ -35,8 +33,7 @@ async function routes(fastify) {
           },
         },
       },
-    },
-    async (request, reply) => {
+    }, async (request, reply) => {
       const { id } = request.params;
       const user = await User.findOne({
         where: { id },
@@ -51,9 +48,7 @@ async function routes(fastify) {
     },
   );
 
-  fastify.post(
-    '/users',
-    {
+  fastify.post('/users', {
       body: {
         type: 'object',
         required: ['username', 'password', 'name'],
@@ -81,8 +76,7 @@ async function routes(fastify) {
           },
         },
       },
-    },
-    async (request, reply) => {
+    }, async (request, reply) => {
       try {
         if (request.body.isAdmin && !request.user.isAdmin) {
           delete request.body.isAdmin;
@@ -113,9 +107,7 @@ async function routes(fastify) {
     },
   );
 
-  fastify.delete(
-    '/users/:id',
-    {
+  fastify.delete('/users/:id', {
       required: ['id'],
       querystring: {
         id: { type: 'integer' },
@@ -138,8 +130,7 @@ async function routes(fastify) {
           },
         },
       },
-    },
-    async (request, reply) => {
+    }, async (request, reply) => {
       const { id } = request.params;
 
       const user = await User.findOne({

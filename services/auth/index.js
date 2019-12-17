@@ -2,6 +2,7 @@ const argon2 = require('argon2');
 const { User, sequelize, UserToken } = require('../../models');
 const config = require('../../config');
 const tokenService = require('./tokenService');
+const { isSecureRequest } = require('../utils');
 
 const loginOpts = {
   schema: {
@@ -85,7 +86,7 @@ async function routes(fastify) {
       httpOnly: true,
       path: '/',
       maxAge: request.body.rememberMe ? config.auth.maxAge : undefined,
-      secure: process.env.NODE_ENV === 'production',
+      secure: isSecureRequest(request),
     });
 
     return {
